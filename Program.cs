@@ -1,73 +1,64 @@
-﻿namespace TanothClicker
-{
-   
-    using System.Runtime.InteropServices;
-    using System.Threading;
+﻿using static TanothClicker.MouseEvents;
+using static TanothClicker.Extensions;
+using static TanothClicker.Constants;
 
+namespace TanothClicker
+{
     class Program
     {
-        // Importing the necessary methods from user32.dll
-        [DllImport("user32.dll")]
-        static extern bool SetCursorPos(int X, int Y);
-
-        [DllImport("user32.dll")]
-        static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint dwData, int dwExtraInfo);
-
-        // Constants for mouse events
-        private const uint MOUSEEVENTF_LEFTDOWN = 0x02;
-        private const uint MOUSEEVENTF_LEFTUP = 0x04;
-
         static void Main(string[] args)
         {
-            
-            int AcceptxCoord = 1100;  
-            int AcceptyCoord = 750;  
+            ScreenShotSaver screenShotSaver = new ScreenShotSaver();
+            OcrHelper ocrHelper = new OcrHelper(TessDataPath);
 
-            int AdventurexCoord = 590;
-            int AdventureyCoord = 750;
             Console.WriteLine("Tanoth Clicker");
-            Console.WriteLine("Press any key to start");
+            Console.WriteLine("Press s to start");
 
-            string toggle  = Console.ReadLine();
+            string toggle = Console.ReadLine();
 
-            if(toggle == "exit")
+            if (toggle == "exit")
             {
                 return;
             }
-            else if(toggle == "start")
+            else if (toggle == "s")
             {
-                Console.WriteLine("Clicking will start in 5 seconds");
-                Thread.Sleep(1000);  // 5 seconds
-                Console.WriteLine("Clicking will start in 4 seconds");
-                Thread.Sleep(1000);  // 5 seconds
-                Console.WriteLine("Clicking will start in 3 seconds");
-                Thread.Sleep(1000);  // 5 seconds
-                Console.WriteLine("Clicking will start in 2 seconds");
-                Thread.Sleep(1000);  // 5 seconds
-                Console.WriteLine("Clicking will start in 1 second");
-                Thread.Sleep(1000);  // 5 seconds
+                ClickingStart();
+                for (int i = 0; i < AdventuresToday; i++)
+                {
+                    Adventure adventure = EffiencyCalculator.Calculate(ocrHelper, screenShotSaver);
+                    int minsToSleep = adventure.TimeToFinish;
+
+                    AdventureClick(adventure.Number);
+                    SleepSecs(2);
+
+                    AcceptClick();
+
+                    Console.WriteLine("Sleeping for " + minsToSleep + " minutes");
+                    SleepMins(minsToSleep);
+
+                    NextClick();
+                    SleepSecs(2);
+
+                    AdvMenuClick();
+                    SleepSecs(2);
+                }
+                //Delete all screenshots
+                screenShotSaver.DeleteAllScreenshots(UploadsPath);
             }
-
-
-            for (int i = 0; i < 15; i++)
+            else
             {
-                // Move the mouse to the desired location
-                SetCursorPos(AdventurexCoord, AdventureyCoord);
+                Console.WriteLine("Test pos");
+                for (int i = 0; i < 100; i++)
+                {
+                    Console.WriteLine("------------------------------");
+                    Console.WriteLine("Enter new x and y coordinates: ");
 
-                mouse_event(MOUSEEVENTF_LEFTDOWN, (uint)AdventurexCoord, (uint)AdventureyCoord, 0, 0);
-                mouse_event(MOUSEEVENTF_LEFTUP, (uint)AdventurexCoord, (uint)AdventureyCoord, 0, 0);
+                    int newxCoord = Convert.ToInt32(Console.ReadLine());
+                    int newyCoord = Convert.ToInt32(Console.ReadLine());
 
-                Thread.Sleep(3000);  // 3 seconds
-
-                // Move the mouse to the desired location
-                SetCursorPos(AcceptxCoord, AcceptyCoord);
-
-                mouse_event(MOUSEEVENTF_LEFTDOWN, (uint)AcceptxCoord, (uint)AcceptyCoord, 0, 0);
-                mouse_event(MOUSEEVENTF_LEFTUP, (uint)AcceptxCoord, (uint)AcceptyCoord, 0, 0);
-
-                Thread.Sleep(20 * 60 * 1000);  // 20 minutes
+                    SetPosition(newxCoord, newyCoord);
+                }
             }
         }
     }
-
 }
