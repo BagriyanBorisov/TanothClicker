@@ -34,7 +34,7 @@ namespace TanothClicker
         {
             string extractedText = ocrHelper.ExtractTextFromImage(filePath);
 
-            int extractedInt = int.Parse(extractedText.Substring(0, 2));
+            int extractedInt = int.Parse(extractedText.Trim());
             Console.WriteLine("Extracted int: " + extractedInt);
 
             return extractedInt;

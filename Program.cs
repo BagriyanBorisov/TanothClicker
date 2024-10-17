@@ -22,9 +22,14 @@ namespace TanothClicker
             }
             else if (toggle == "s")
             {
+                Console.WriteLine("Enter number of adventures to do:");
+                int adventuresToday = Convert.ToInt32(Console.ReadLine());
                 ClickingStart();
-                for (int i = 0; i < AdventuresToday; i++)
+                for (int i = 1; i <= adventuresToday; i++)
                 {
+                    Console.WriteLine("Adventure number: " + i);
+                    Console.WriteLine("------------------------------");
+
                     Adventure adventure = EffiencyCalculator.Calculate(ocrHelper, screenShotSaver);
                     int minsToSleep = adventure.TimeToFinish;
 
