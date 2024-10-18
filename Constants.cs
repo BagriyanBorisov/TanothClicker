@@ -34,6 +34,18 @@
         public static int CutImgxDownCoord = 955;
         public static int CutImgyDownCoord = 720;
 
+        public static int CutImgGoldXUpCoord = 843;
+        public static int CutImgGoldYUpCoord = 643;
+
+        public static int CutImgGoldXDownCoord = 893;
+        public static int CutImgGoldYDownCoord = 670;
+
+        public static int CutImgExpXUpCoord = 843;
+        public static int CutImgExpYUpCoord = 670;
+
+        public static int CutImgExpXDownCoord = 885;
+        public static int CutImgExpYDownCoord = 690;
+
 
         public static uint MOUSEEVENTF_LEFTDOWN = 0x02;
         public static uint MOUSEEVENTF_LEFTUP = 0x04;
