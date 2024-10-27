@@ -35,7 +35,6 @@ namespace TanothClicker
                 for (int i = 1; i <= adventuresToday; i++)
                 {
                     WriteLine("Adventure number: " + i);
-                    WriteLine("------------------------------");
 
                     Adventure adventure = EffiencyCalculator.Calculate(ocrHelper, screenShotSaver, mode);
 

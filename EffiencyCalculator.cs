@@ -15,24 +15,15 @@ namespace TanothClicker
                 AdventureClick(i);
                 SleepSecs(2);
 
-                SimulateShiftWinS();
-                SleepSecs(2);
-                CutImgClick(Mode.Gold);
-                SleepSecs(2);
+                CutMode(Mode.Gold);
                 saver.SaveScreenshotFromClipboard(adventure.GoldPath);
                 adventure.Gold = ExtractInt(adventure.GoldPath, helper);
 
-                SimulateShiftWinS();
-                SleepSecs(2);
-                CutImgClick(Mode.Expirience);
-                SleepSecs(2);
+                CutMode(Mode.Expirience);
                 saver.SaveScreenshotFromClipboard(adventure.ExpPath);
                 adventure.Exp = ExtractInt(adventure.ExpPath, helper);
 
-                SimulateShiftWinS();
-                SleepSecs(2);
-                CutImgClick(Mode.Minutes);
-                SleepSecs(2);
+                CutMode(Mode.Minutes);
                 saver.SaveScreenshotFromClipboard(adventure.Path);
                 adventure.TimeToFinish = ExtractInt(adventure.Path, helper) + 1;
 
@@ -57,14 +48,13 @@ namespace TanothClicker
         }
 
 
-        static int ExtractInt(string filePath, OcrHelper ocrHelper)
+        private static int ExtractInt(string filePath, OcrHelper ocrHelper)
         {
             string extractedText = ocrHelper.ExtractTextFromImage(filePath);
 
             try
             {
                 int extractedInt = int.Parse(extractedText.Trim());
-                Console.WriteLine("Extracted text to int: " + extractedInt);
                 return extractedInt;
             }
             catch (Exception)
@@ -72,6 +62,14 @@ namespace TanothClicker
                 Console.WriteLine("Could not retrieve int from: " + filePath);
             }
             return 0;
+        }
+
+        private static void CutMode(Mode mode)
+        {
+            SimulateShiftWinS();
+            SleepSecs(2);
+            CutImgClick(mode);
+            SleepSecs(2);
         }
     }
 }
