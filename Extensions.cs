@@ -1,4 +1,6 @@
-﻿namespace TanothClicker
+﻿using System.Text;
+
+namespace TanothClicker
 {
     public static class Extensions
     {
@@ -24,6 +26,19 @@
             SleepSecs(1);
             Console.WriteLine("Clicking will start in 1 second");
             SleepSecs(1);
+        }
+
+        public static void PrintAdventure(Adventure adventure)
+        {
+            var builder = new StringBuilder();
+            builder.AppendLine("------------------");
+            builder.AppendLine($"| Adventure:  {adventure.Number}  |");
+            builder.AppendLine($"| Gold:   {adventure.Gold}   |");
+            builder.AppendLine($"| Exp:    {adventure.Exp}   |");
+            builder.AppendLine($"| Time:     {adventure.TimeToFinish}   |");
+            builder.AppendLine("------------------");
+
+            Console.WriteLine(builder.ToString());
         }
     }
 }

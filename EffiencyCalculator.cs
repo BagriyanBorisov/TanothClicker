@@ -47,7 +47,9 @@ namespace TanothClicker
                     return adventures.OrderByDescending(a => a.Exp).First();
                 case "time":
                     return adventures.OrderBy(a => a.TimeToFinish).First();
-                   
+                case "both":
+                    return adventures.OrderByDescending(a => a.TimeToFinish).First();
+
                 default:
                     return adventures.OrderBy(a => a.TimeToFinish).First();
 
