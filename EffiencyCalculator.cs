@@ -15,14 +15,15 @@ namespace TanothClicker
                 AdventureClick(i);
                 SleepSecs(2);
 
-                CutMode(Mode.Gold);
-                saver.SaveScreenshotFromClipboard(adventure.GoldPath);
-                adventure.Gold = ExtractInt(adventure.GoldPath, helper);
+                //CutMode(Mode.Gold);
+                //saver.SaveScreenshotFromClipboard(adventure.GoldPath);
+                //adventure.Gold = ExtractInt(adventure.GoldPath, helper);
 
-                CutMode(Mode.Expirience);
-                saver.SaveScreenshotFromClipboard(adventure.ExpPath);
-                adventure.Exp = ExtractInt(adventure.ExpPath, helper);
-
+                //CutMode(Mode.Expirience);
+                //saver.SaveScreenshotFromClipboard(adventure.ExpPath);
+                //adventure.Exp = ExtractInt(adventure.ExpPath, helper);
+                ImageProcessor imageProcessor = new ImageProcessor();
+                imageProcessor.ProcessScreenScreenshot();
                 CutMode(Mode.Minutes);
                 saver.SaveScreenshotFromClipboard(adventure.Path);
                 adventure.TimeToFinish = ExtractInt(adventure.Path, helper) + 1;
@@ -38,8 +39,10 @@ namespace TanothClicker
                     return adventures.OrderByDescending(a => a.Exp).First();
                 case "time":
                     return adventures.OrderBy(a => a.TimeToFinish).First();
-                case "both":
+                case "slow":
                     return adventures.OrderByDescending(a => a.TimeToFinish).First();
+                case "fast":
+                    return adventures.OrderBy(a => a.TimeToFinish).First();
 
                 default:
                     return adventures.OrderBy(a => a.TimeToFinish).First();

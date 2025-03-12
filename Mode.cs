@@ -4,6 +4,8 @@
     {
         Gold,
         Expirience,
-        Minutes
+        Minutes,
+        Fast,
+        Slow
     }
 }

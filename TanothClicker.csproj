@@ -1,20 +1,27 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWindowsForms>true</UseWindowsForms>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="System.Drawing.Common" Version="8.0.10" />
-    <PackageReference Include="Tesseract" Version="5.2.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Emgu.CV" Version="4.10.0.5680" />
+		<PackageReference Include="Emgu.CV.Bitmap" Version="4.10.0.5680" />
+		<PackageReference Include="Emgu.CV.runtime.windows" Version="4.10.0.5680" />
 
-  <ItemGroup>
-    <Folder Include="tessdata\" />
-    <Folder Include="Uploads\" />
-  </ItemGroup>
+		<PackageReference Include="System.Drawing.Common" Version="9.0.2" />
+		<PackageReference Include="Tesseract" Version="5.2.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="tessdata\" />
+		<Folder Include="Uploads\" />
+	</ItemGroup>
+
+	
 
 </Project>

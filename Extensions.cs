@@ -33,8 +33,8 @@ namespace TanothClicker
             var builder = new StringBuilder();
             builder.AppendLine("------------------");
             builder.AppendLine($"| Adventure:  {adventure.Number}  |");
-            builder.AppendLine($"| Gold:   {adventure.Gold}   |");
-            builder.AppendLine($"| Exp:    {adventure.Exp}   |");
+            //builder.AppendLine($"| Gold:   {adventure.Gold}   |");
+            //builder.AppendLine($"| Exp:    {adventure.Exp}   |");
             builder.AppendLine($"| Time:     {adventure.TimeToFinish}   |");
             builder.AppendLine("------------------");
 

@@ -27,7 +27,7 @@ namespace TanothClicker
                 WriteLine("Enter number of adventures to do:");
                 int adventuresToday = Convert.ToInt32(ReadLine());
 
-                WriteLine("Choose mode between gold, exp, time or both:");
+                WriteLine("Choose mode between fast or slow:");
                 string mode = ReadLine();
 
 
@@ -58,28 +58,46 @@ namespace TanothClicker
             }
             else
             {
-               var adventure = new Adventure(1);
-                adventure.Number = 1;
-                adventure.TimeToFinish = 18;
-                adventure.Exp = 1234;
-                adventure.Gold = 123;
+                //var adventure = new Adventure(1);
+                // adventure.Number = 1;
+                // adventure.TimeToFinish = 18;
+                // adventure.Exp = 1234;
+                // adventure.Gold = 123;
 
 
 
-                var builder = new StringBuilder();
-                builder.AppendLine("------------------");
-                builder.AppendLine($"| Adventure: {adventure.Number}   |");
-                builder.AppendLine($"| Gold:   {adventure.Gold}   |");
-                builder.AppendLine($"| Exp:    {adventure.Exp}    |");
-                builder.AppendLine($"| Time:   {adventure.TimeToFinish}     |");
-                builder.AppendLine("------------------");
+                // var builder = new StringBuilder();
+                // builder.AppendLine("------------------");
+                // builder.AppendLine($"| Adventure: {adventure.Number}   |");
+                // builder.AppendLine($"| Gold:   {adventure.Gold}   |");
+                // builder.AppendLine($"| Exp:    {adventure.Exp}    |");
+                // builder.AppendLine($"| Time:   {adventure.TimeToFinish}     |");
+                // builder.AppendLine("------------------");
 
-                Console.WriteLine(builder.ToString());
+                // Console.WriteLine(builder.ToString());
 
 
-                string text = ocrHelper.ExtractTextFromImage(UploadsPath + "61744c35-2020-4a0b-aa0f-4dae5817e3d5Minutes.png");
+                //string text = ocrHelper.ExtractTextFromImage(UploadsPath + "Screenshot 2025-03-09 135149.png");
 
-                Console.WriteLine("Test pos");
+                //Console.WriteLine(text);
+
+                while (Console.ReadLine() != "q")
+                {
+                    string path = UploadsPath + Guid.NewGuid() + "test.png";
+                    screenShotSaver.SaveScreenshotFromClipboard(path);
+                    string text = ocrHelper.ExtractTextFromImage(path);
+
+                    Console.WriteLine(text);
+
+                    Console.ReadLine();
+                }
+
+
+                //screenShotSaver.SaveScreenshotFromClipboard(UploadsPath + "test.png");
+                //string text = ocrHelper.ExtractTextFromImage(UploadsPath + "test.png");
+
+
+                //Console.WriteLine(text);
                 for (int i = 0; i < 100; i++)
                 {
                     WriteLine("------------------------------");
