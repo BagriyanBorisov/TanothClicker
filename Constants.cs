@@ -28,23 +28,23 @@
         public static int AdvMenuxCoord = 350;
         public static int AdvMenuyCoord = 545;
 
-        public static int CutImgxUpCoord = 843;
-        public static int CutImgyUpCoord = 690;
+        public static int CutImgMinutesXUpCoord = 843;
+        public static int CutImgMinutesYUpCoord = 690;
 
-        public static int CutImgxDownCoord = 955;
-        public static int CutImgyDownCoord = 720;
+        public static int CutImgMinutesXWidth = 112;
+        public static int CutImgMinutesYHeight = 30;
 
         public static int CutImgGoldXUpCoord = 843;
         public static int CutImgGoldYUpCoord = 643;
 
-        public static int CutImgGoldXDownCoord = 893;
-        public static int CutImgGoldYDownCoord = 670;
+        public static int CutImgGoldXWidth = 50;
+        public static int CutImgGoldYHeight = 27;
 
         public static int CutImgExpXUpCoord = 843;
         public static int CutImgExpYUpCoord = 670;
 
-        public static int CutImgExpXDownCoord = 885;
-        public static int CutImgExpYDownCoord = 690;
+        public static int CutImgExpXWidth = 42;
+        public static int CutImgExpYHeight = 20;
 
 
         public static uint MOUSEEVENTF_LEFTDOWN = 0x02;

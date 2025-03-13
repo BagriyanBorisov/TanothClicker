@@ -1,6 +1,6 @@
 ﻿using Tesseract;
 
-namespace TanothClicker
+namespace TanothClicker.Core
 {
     public class OcrHelper
     {
@@ -18,6 +18,7 @@ namespace TanothClicker
             {
                 using (var engine = new TesseractEngine(tessDataPath, "eng", EngineMode.Default))
                 {
+                    engine.SetVariable("user_defined_dpi", "71");
                     engine.SetVariable("tessedit_char_whitelist", "0123456789");
                     using (var img = Pix.LoadFromFile(imagePath))
                     {

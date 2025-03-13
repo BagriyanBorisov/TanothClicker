@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace TanothClicker
+namespace TanothClicker.Core
 {
     public static class KeySimulator
     {

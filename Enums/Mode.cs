@@ -1,4 +1,4 @@
-﻿namespace TanothClicker
+﻿namespace TanothClicker.Enums
 {
     public enum Mode
     {

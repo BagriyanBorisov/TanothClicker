@@ -1,8 +1,9 @@
-﻿using static TanothClicker.MouseEvents;
-using static TanothClicker.Extensions;
-using static TanothClicker.Constants;
+﻿using TanothClicker.Core;
+using TanothClicker.Models;
 using static System.Console;
-using System.Text;
+using static TanothClicker.Constants;
+using static TanothClicker.Extensions;
+using static TanothClicker.Core.MouseEvents;
 
 namespace TanothClicker
 {
@@ -10,7 +11,7 @@ namespace TanothClicker
     {
         static void Main(string[] args)
         {
-            ScreenShotSaver screenShotSaver = new ScreenShotSaver();
+            ImageProcessor imageProcessor = new ImageProcessor();
             OcrHelper ocrHelper = new OcrHelper(TessDataPath);
 
             WriteLine("Tanoth Clicker");
@@ -36,7 +37,7 @@ namespace TanothClicker
                 {
                     WriteLine("Adventure number: " + i);
 
-                    Adventure adventure = EffiencyCalculator.Calculate(ocrHelper, screenShotSaver, mode);
+                    Adventure adventure = EffiencyCalculator.Calculate(ocrHelper, imageProcessor, mode);
 
                     AdventureClick(adventure.Number);
                     SleepSecs(2);
@@ -54,7 +55,7 @@ namespace TanothClicker
                    
                 }
                 //Delete all screenshots
-                screenShotSaver.DeleteAllScreenshots(UploadsPath);
+                imageProcessor.DeleteAllScreenshots(UploadsPath);
             }
             else
             {
@@ -81,16 +82,16 @@ namespace TanothClicker
 
                 //Console.WriteLine(text);
 
-                while (Console.ReadLine() != "q")
-                {
-                    string path = UploadsPath + Guid.NewGuid() + "test.png";
-                    screenShotSaver.SaveScreenshotFromClipboard(path);
-                    string text = ocrHelper.ExtractTextFromImage(path);
+                //while (Console.ReadLine() != "q")
+                //{
+                //    string path = UploadsPath + Guid.NewGuid() + "test.png";
+                //    screenShotSaver.SaveScreenshotFromClipboard(path);
+                //    string text = ocrHelper.ExtractTextFromImage(path);
 
-                    Console.WriteLine(text);
+                //    Console.WriteLine(text);
 
-                    Console.ReadLine();
-                }
+                //    Console.ReadLine();
+                //}
 
 
                 //screenShotSaver.SaveScreenshotFromClipboard(UploadsPath + "test.png");
