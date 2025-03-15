@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using TanothClicker.Models;
 
 namespace TanothClicker
 {
@@ -31,6 +32,10 @@ namespace TanothClicker
         public static void PrintAdventure(Adventure adventure)
         {
             var builder = new StringBuilder();
+
+
+
+
             builder.AppendLine("------------------");
             builder.AppendLine($"| Adventure:  {adventure.Number}  |");
             builder.AppendLine($"| Gold:   {adventure.Gold}   |");

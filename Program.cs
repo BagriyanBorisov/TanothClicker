@@ -1,8 +1,9 @@
-﻿using static TanothClicker.MouseEvents;
-using static TanothClicker.Extensions;
-using static TanothClicker.Constants;
+﻿using TanothClicker.Core;
+using TanothClicker.Models;
 using static System.Console;
-using System.Text;
+using static TanothClicker.Constants;
+using static TanothClicker.Extensions;
+using static TanothClicker.Core.MouseEvents;
 
 namespace TanothClicker
 {
@@ -10,7 +11,7 @@ namespace TanothClicker
     {
         static void Main(string[] args)
         {
-            ScreenShotSaver screenShotSaver = new ScreenShotSaver();
+            ImageProcessor imageProcessor = new ImageProcessor();
             OcrHelper ocrHelper = new OcrHelper(TessDataPath);
 
             WriteLine("Tanoth Clicker");
@@ -27,7 +28,7 @@ namespace TanothClicker
                 WriteLine("Enter number of adventures to do:");
                 int adventuresToday = Convert.ToInt32(ReadLine());
 
-                WriteLine("Choose mode between gold, exp, time or both:");
+                WriteLine("Choose mode between fast or slow:");
                 string mode = ReadLine();
 
 
@@ -36,7 +37,7 @@ namespace TanothClicker
                 {
                     WriteLine("Adventure number: " + i);
 
-                    Adventure adventure = EffiencyCalculator.Calculate(ocrHelper, screenShotSaver, mode);
+                    Adventure adventure = EffiencyCalculator.Calculate(ocrHelper, imageProcessor, mode);
 
                     AdventureClick(adventure.Number);
                     SleepSecs(2);
@@ -54,32 +55,10 @@ namespace TanothClicker
                    
                 }
                 //Delete all screenshots
-                screenShotSaver.DeleteAllScreenshots(UploadsPath);
+                imageProcessor.DeleteAllScreenshots(UploadsPath);
             }
             else
             {
-               var adventure = new Adventure(1);
-                adventure.Number = 1;
-                adventure.TimeToFinish = 18;
-                adventure.Exp = 1234;
-                adventure.Gold = 123;
-
-
-
-                var builder = new StringBuilder();
-                builder.AppendLine("------------------");
-                builder.AppendLine($"| Adventure: {adventure.Number}   |");
-                builder.AppendLine($"| Gold:   {adventure.Gold}   |");
-                builder.AppendLine($"| Exp:    {adventure.Exp}    |");
-                builder.AppendLine($"| Time:   {adventure.TimeToFinish}     |");
-                builder.AppendLine("------------------");
-
-                Console.WriteLine(builder.ToString());
-
-
-                string text = ocrHelper.ExtractTextFromImage(UploadsPath + "61744c35-2020-4a0b-aa0f-4dae5817e3d5Minutes.png");
-
-                Console.WriteLine("Test pos");
                 for (int i = 0; i < 100; i++)
                 {
                     WriteLine("------------------------------");

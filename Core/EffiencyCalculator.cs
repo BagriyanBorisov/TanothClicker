@@ -1,12 +1,14 @@
-﻿using static TanothClicker.MouseEvents;
-using static TanothClicker.KeySimulator;
+﻿using static TanothClicker.Core.MouseEvents;
 using static TanothClicker.Extensions;
+using TanothClicker.Models;
+using TanothClicker.Enums;
 
-namespace TanothClicker
+namespace TanothClicker.Core
 {
     internal class EffiencyCalculator
     {
-        public static Adventure Calculate(OcrHelper helper, ScreenShotSaver saver, string mode)
+
+        public static Adventure Calculate(OcrHelper helper, ImageProcessor imageProcessor, string mode)
         {
             List<Adventure> adventures = new List<Adventure>();
             for (int i = 0; i < 4; i++)
@@ -14,23 +16,17 @@ namespace TanothClicker
                 Adventure adventure = new Adventure(i);
                 AdventureClick(i);
                 SleepSecs(2);
+                imageProcessor.ProcessScreenScreenshot(adventure.Path);
 
-                CutMode(Mode.Gold);
-                saver.SaveScreenshotFromClipboard(adventure.GoldPath);
+
+                adventure.TimeToFinish = ExtractInt(adventure.MinutesPath, helper) + 1;
                 adventure.Gold = ExtractInt(adventure.GoldPath, helper);
-
-                CutMode(Mode.Expirience);
-                saver.SaveScreenshotFromClipboard(adventure.ExpPath);
                 adventure.Exp = ExtractInt(adventure.ExpPath, helper);
-
-                CutMode(Mode.Minutes);
-                saver.SaveScreenshotFromClipboard(adventure.Path);
-                adventure.TimeToFinish = ExtractInt(adventure.Path, helper) + 1;
 
                 adventures.Add(adventure);
             }
 
-            switch(mode)
+            switch (mode)
             {
                 case "gold":
                     return adventures.OrderByDescending(a => a.Gold).First();
@@ -38,8 +34,10 @@ namespace TanothClicker
                     return adventures.OrderByDescending(a => a.Exp).First();
                 case "time":
                     return adventures.OrderBy(a => a.TimeToFinish).First();
-                case "both":
+                case "slow":
                     return adventures.OrderByDescending(a => a.TimeToFinish).First();
+                case "fast":
+                    return adventures.OrderBy(a => a.TimeToFinish).First();
 
                 default:
                     return adventures.OrderBy(a => a.TimeToFinish).First();
@@ -58,18 +56,10 @@ namespace TanothClicker
                 return extractedInt;
             }
             catch (Exception)
-            { 
+            {
                 Console.WriteLine("Could not retrieve int from: " + filePath);
             }
             return 0;
-        }
-
-        private static void CutMode(Mode mode)
-        {
-            SimulateShiftWinS();
-            SleepSecs(2);
-            CutImgClick(mode);
-            SleepSecs(2);
         }
     }
 }
