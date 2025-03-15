@@ -54,8 +54,8 @@
         public static int AcceptxCoord = 850; /*1100;*/
         public static int AcceptyCoord = 750; /*750;*/
 
-        public static int NextxCoord = 910;
-        public static int NextyCoord = 915;
+        public static int NextxCoord = 730; /*910;*/
+        public static int NextyCoord = 910; /*915;*/
 
         public static int AdvMenuxCoord = 100; /*350;*/
         public static int AdvMenuyCoord = 535; /*545;*/
