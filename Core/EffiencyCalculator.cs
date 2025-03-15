@@ -61,13 +61,5 @@ namespace TanothClicker.Core
             }
             return 0;
         }
-
-        //private static void CutMode(Mode mode)
-        //{
-        //    SimulateShiftWinS();
-        //    SleepSecs(2);
-        //    CutImgClick(mode);
-        //    SleepSecs(2);
-        //}
     }
 }

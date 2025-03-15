@@ -54,22 +54,6 @@ namespace TanothClicker.Core
 
         public static void AdvMenuClick() => LeftClick(AdvMenuxCoord, AdvMenuyCoord);
 
-        //public static void CutImgClick(Mode mode)
-        //{
-        //    switch (mode)
-        //    {
-        //        case Mode.Gold:
-        //            Drag(CutImgGoldXUpCoord, CutImgGoldYUpCoord, CutImgGoldXDownCoord, CutImgGoldYDownCoord);
-        //            break;
-        //        case Mode.Expirience:
-        //            Drag(CutImgExpXUpCoord, CutImgExpYUpCoord, CutImgExpXDownCoord, CutImgExpYDownCoord);
-        //            break;
-        //        case Mode.Minutes:
-        //            Drag(CutImgxUpCoord, CutImgyUpCoord, CutImgxDownCoord, CutImgyDownCoord);
-        //            break;
-        //    }
-        //}
-
         public static void SetPosition(int x, int y) => SetCursorPos(x, y);
     }
 }
