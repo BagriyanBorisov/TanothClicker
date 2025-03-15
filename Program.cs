@@ -11,6 +11,8 @@ namespace TanothClicker
     {
         static void Main(string[] args)
         {
+
+
             ImageProcessor imageProcessor = new ImageProcessor();
             OcrHelper ocrHelper = new OcrHelper(TessDataPath);
 
@@ -59,6 +61,10 @@ namespace TanothClicker
             }
             else
             {
+
+                WriteLine(TessDataPath);
+                WriteLine(UploadsPath);
+
                 for (int i = 0; i < 100; i++)
                 {
                     WriteLine("------------------------------");

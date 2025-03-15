@@ -32,8 +32,6 @@ namespace TanothClicker.Core
                     return adventures.OrderByDescending(a => a.Gold).First();
                 case "exp":
                     return adventures.OrderByDescending(a => a.Exp).First();
-                case "time":
-                    return adventures.OrderBy(a => a.TimeToFinish).First();
                 case "slow":
                     return adventures.OrderByDescending(a => a.TimeToFinish).First();
                 case "fast":
